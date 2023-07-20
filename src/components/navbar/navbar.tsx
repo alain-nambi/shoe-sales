@@ -1,4 +1,5 @@
 import { Button } from "../ui/button"
+import { Link } from "react-router-dom"
 
 const NavBar: React.FC = () => {
     return (
@@ -11,7 +12,7 @@ const NavBar: React.FC = () => {
                 </div>
                 {/* Navigation link */}
                 <ul className="flex gap-5 text-sm cursor-pointer">
-                    <NavItem href="/home">Home</NavItem>
+                    <NavItem href="/">Home</NavItem>
                     <NavItem href="/about">About</NavItem>
                     <NavItem href="/category">Category</NavItem>
                     <NavItem href="/contact">Contact</NavItem>
@@ -19,7 +20,7 @@ const NavBar: React.FC = () => {
                 {/* Navigation buttons */}
                 <div className="flex items-center gap-2">
                     <Button className="bg-orange-500 hover:bg-orange-400">Login</Button>
-                    <Button 
+                    <Button
                         className="
                             border-orange-500 
                             border bg-transparent 
@@ -42,10 +43,10 @@ interface NavItemProps {
     children: React.ReactNode
 }
 
-const NavItem: React.FC<NavItemProps> = ({href, children}) => {
+const NavItem: React.FC<NavItemProps> = ({ href, children }) => {
     return (
         <li>
-            <a href={href} className="hover:text-orange-500">{children}</a>
+            <Link to={href} className="hover:text-orange-500">{children}</Link>
         </li>
     )
 }
