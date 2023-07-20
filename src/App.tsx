@@ -1,9 +1,13 @@
 import './styles/globals.css'
+import NavBar from './components/navbar/navbar'
+import Container from './components/container'
 
 function App() {
   return (
     <>
-      <span>App</span>
+      <Container>
+        <NavBar />
+      </Container>
     </>
   )
 }
