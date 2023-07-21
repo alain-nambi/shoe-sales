@@ -1,0 +1,27 @@
+/* Mobile menu */
+.menuMobile__container {
+  @apply absolute bottom-0 right-0 left-0 px-5 py-4 bg-orange-500 rounded-b-none rounded-2xl;
+}
+
+.menuMobile__content {
+  @apply grid grid-cols-3 items-center justify-center h-auto gap-5 text-sm cursor-pointer;
+}
+
+.menuMobile__list {
+  @apply flex items-center flex-col gap-px text-white px-3 py-2 text-xs rounded-lg;
+}
+
+.menuMobile__list:hover {
+  @apply bg-white text-orange-500;
+}
+/* End Mobile Menu */
+
+/* Buttons */
+.buttonPrimary {
+  @apply bg-orange-500 hover:bg-orange-400;
+}
+
+.buttonSecondary {
+  @apply border-orange-500 border bg-transparent hover:border-orange-400 text-orange-500 hover:bg-transparent hover:text-orange-400;
+}
+/* End Buttons */
