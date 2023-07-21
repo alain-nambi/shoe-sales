@@ -16,9 +16,9 @@ import {
 import styles from "./navbar.module.css"
 
 const NavBar: React.FC = () => {
-  const isDesktop = useMediaQuery({ minWidth: 992 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+//   const isDesktop = useMediaQuery({ minWidth: 992 });
+//   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
 
   const navItemsDesktop = [
     { href: "/", label: "Home", icon: Home },
