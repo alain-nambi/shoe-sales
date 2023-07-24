@@ -3,8 +3,25 @@
   @apply absolute bottom-0 right-0 left-0 px-5 py-4 bg-orange-500 rounded-b-none rounded-2xl;
 }
 
+/* The element to apply the animation to */
+.animate__fadeUp,
+.animate__fadeDown {
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.animate__fadeUp {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.animate__fadeDown {
+  transform: translateY(10rem);
+  opacity: 0;
+  pointer-events: none;
+}
+
 .menuMobile__content {
-  @apply grid grid-cols-3 items-center justify-center h-auto gap-5 text-sm cursor-pointer;
+  @apply grid grid-cols-3 sm:grid-cols-6 items-center justify-center h-auto gap-5 text-sm cursor-pointer;
 }
 
 .menuMobile__list {

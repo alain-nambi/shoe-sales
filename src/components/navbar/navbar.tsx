@@ -86,8 +86,16 @@ const NavBar: React.FC = () => {
 
         {/* Mobile navigation */}
         {/* Affiche les liens de navigation sur les appareils mobiles */}
-        {isMobile && isMobileMenuOpen && (
-          <div className={styles.menuMobile__container}>
+        {isMobile && (
+          <div 
+            className={`
+              ${styles.menuMobile__container} 
+              ${isMobileMenuOpen 
+                  ? styles.animate__fadeUp 
+                  : styles.animate__fadeDown
+              }
+            `}
+          >
             <ul className={styles.menuMobile__content}>
               {navItemsMobile.map((item) => (
                 <NavItem
