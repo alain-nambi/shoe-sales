@@ -1,12 +1,12 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
-import NavBar from "../components/navbar/navbar";
+import Home from "../components/home/home";
 import NotFound from "../components/not-found"
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <NavBar />,
+        element: <Home />,
     },
     {
         path: "/home",
