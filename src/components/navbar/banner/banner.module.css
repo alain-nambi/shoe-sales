@@ -1,0 +1,21 @@
+/* ------ Headers ------ */ 
+.banner {
+    @apply h-64 sm:h-96 bg-cover bg-center relative bg-slate-200 rounded-lg flex items-center justify-center;
+}
+
+.banner__content {
+    @apply flex flex-col items-center justify-center gap-2
+}
+
+.banner__title {
+    @apply font-bold max-sm:text-base lg:text-3xl md:text-2xl
+}
+
+.banner__subtitle {
+    @apply max-sm:text-sm md:text-lg lg:text-xl text-center
+}
+
+.banner__button {
+    @apply max-sm:text-xs md:text-sm lg:text-sm mt-2
+}
+/* ------ End of headers ------ */

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import {
@@ -17,8 +17,8 @@ import styles from "./navbar.module.css"
 
 const NavBar: React.FC = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-//   const isDesktop = useMediaQuery({ minWidth: 992 });
-//   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+  //   const isDesktop = useMediaQuery({ minWidth: 992 });
+  //   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
 
   const navItemsDesktop = [
     { href: "/", label: "Home", icon: Home },
@@ -38,14 +38,10 @@ const NavBar: React.FC = () => {
   return (
     <>
       {/* Navigation bar */}
-      <nav className="flex justify-between items-center py-3">
+      <nav className={styles.navbar}>
         {/* Logo */}
-        <div
-          className={`flex justify-between items-center ${
-            isMobile ? "w-full" : ""
-          }`}
-        >
-          <div className="text-base text-orange-500 font-black">
+        <div className={`${isMobile ? "w-full" : ""} ${styles.navbar__container}`}>
+          <div className={styles.navbar__logo}>
             <span className="cursor-pointer">Logo</span>
           </div>
 
@@ -53,11 +49,9 @@ const NavBar: React.FC = () => {
           {/* Ajouter les boutons de navigation pour les mobiles */}
           {isMobile && (
             <Button
-              className={`${styles.buttonPrimary}`}
+              className="button__primary"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              title={`${
-                isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"
-              }`}
+              title={`${isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}`}
             >
               {isMobileMenuOpen ? (
                 <Minimize2 size={20} />
@@ -87,12 +81,12 @@ const NavBar: React.FC = () => {
         {/* Mobile navigation */}
         {/* Affiche les liens de navigation sur les appareils mobiles */}
         {isMobile && (
-          <div 
+          <div
             className={`
               ${styles.menuMobile__container} 
-              ${isMobileMenuOpen 
-                  ? styles.animate__fadeUp 
-                  : styles.animate__fadeDown
+              ${isMobileMenuOpen
+                ? styles.animate__fadeUp
+                : styles.animate__fadeDown
               }
             `}
           >
@@ -116,8 +110,8 @@ const NavBar: React.FC = () => {
           {/* Ne pas afficher les boutons de navigations en version mobile */}
           {!isMobile && (
             <>
-              <Button className={styles.buttonPrimary}>Login</Button>
-              <Button className={styles.buttonSecondary}>Signup</Button>
+              <Button className="button__primary">Login</Button>
+              <Button className="button__secondary">Signup</Button>
             </>
           )}
         </div>
