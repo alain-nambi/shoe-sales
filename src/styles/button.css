@@ -1,0 +1,18 @@
+/* ------ Buttons ------ */
+.button__primary {
+    @apply bg-orange-500 hover:bg-orange-400;
+}
+
+.button__primaryOutline {
+    @apply border border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white bg-transparent;
+}
+
+.button__secondary {
+    @apply border-orange-500 border bg-transparent hover:border-orange-400 text-orange-500 hover:bg-transparent hover:text-orange-400;
+}
+
+.button__third {
+    @apply bg-slate-800 hover:bg-slate-700
+}
+
+/* ------ End Buttons ------ */

@@ -1,4 +1,6 @@
 import './styles/globals.css'
+import './styles/button.css'
+
 import Container from './components/container'
 import Footer from './components/footer'
 
