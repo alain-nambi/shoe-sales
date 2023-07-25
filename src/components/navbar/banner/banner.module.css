@@ -1,6 +1,6 @@
 /* ------ Headers ------ */ 
 .banner {
-    @apply h-64 sm:h-96 bg-cover bg-center relative bg-slate-200 rounded-lg flex items-center justify-center;
+    @apply h-64 sm:h-96 bg-cover bg-center relative bg-neutral-50 border rounded-lg flex items-center justify-center;
 }
 
 .banner__content {
