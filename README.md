@@ -19,3 +19,14 @@ Success! Project initialization completed.
 
 ### Environment variales installation
 https://vitejs.dev/guide/env-and-mode.html
+
+
+1. LazyLoad for images
+2. Axios for api call request
+3. Lucide React for icons
+4. React Responsive for responsive design
+5. Tailwind for styling
+6. ShadCN UI for UI components and design system
+7. React Router for routing
+8. Lazy and Suspense for code splitting
+9. Vite for fast build
