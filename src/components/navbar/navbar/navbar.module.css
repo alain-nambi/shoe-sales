@@ -1,7 +1,8 @@
 /* ------ Navigation ------ */
 .navbar {
-  @apply flex justify-between items-center py-3
+  @apply flex justify-between items-center py-3 sticky top-0 left-0 right-0 z-20 bg-white max-md:mx-[-16px] max-md:px-4 max-md:border-b max-md:mb-4
 }
+
 
 .navbar__container {
   @apply flex justify-between items-center
@@ -11,11 +12,6 @@
   @apply text-base text-orange-500 font-black
 }
 /* ------ End of navigations ------ */
-
-/* ------ Mobile menu ------ */
-.menuMobile__container {
-  @apply absolute bottom-0 right-0 left-0 px-5 py-4 bg-orange-500 rounded-b-none rounded-2xl;
-}
 
 /* ------ Animations ------ */
 /* ------ The element to apply the animation to ------ */
@@ -37,6 +33,10 @@
 /* ------ End of Animations ------ */
 
 /* ------ Mobile Menu ------ */
+.menuMobile__container {
+  @apply fixed z-10 bottom-0 right-0 left-0 px-5 py-4 bg-orange-500 rounded-2xl mx-2 my-2;
+}
+
 .menuMobile__content {
   @apply grid grid-cols-3 sm:grid-cols-6 items-center justify-center h-auto gap-5 text-sm cursor-pointer;
 }
