@@ -1,0 +1,84 @@
+.product__container {
+    @apply mt-4 grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-4
+}
+
+.product__content {
+    @apply bg-white cursor-pointer rounded-xl border p-3 space-y-4 relative
+}
+
+.product__imagerPlaceHolder, .product__imagerPlaceHolder_Skeleton {
+    @apply aspect-square bg-gray-200 relative rounded-md overflow-hidden
+}
+
+.product__image {
+    @apply absolute w-full h-full left-0 top-0 right-0 bottom-0 object-cover aspect-square rounded-md duration-150
+}
+
+.product__content:hover .product__image {
+    @apply transform md:scale-[1.08];
+}
+
+.product__title {
+    @apply font-semibold text-base max-sm:text-sm
+}
+
+.product__title_Skeleton {
+    @apply w-3/4 h-4 bg-gray-200 rounded-md mb-2
+}
+
+/* The moving element */
+.product__imagerPlaceHolder_Skeleton::after,
+.product__title_Skeleton::after,
+.product__category_Skeleton::after,
+.product__price_Skeleton::after {
+    @apply block relative w-full h-full -translate-x-full
+}
+
+.product__imagerPlaceHolder_Skeleton::after,
+.product__title_Skeleton::after,
+.product__category_Skeleton::after,
+.product__price_Skeleton::after {
+    content: "";
+    background: linear-gradient(90deg, transparent,rgba(255, 255, 255, 0.6), transparent);
+}
+
+
+.product__imagerPlaceHolder_Skeleton::after, 
+.product__title_Skeleton::after {
+    animation: skeleton 1.25s ease-in-out infinite;
+}
+
+.product__title_Skeleton::after { 
+    animation: skeleton 1.25s ease-in-out infinite;
+}
+
+.product__category_Skeleton::after {
+    animation: skeleton 1.5s ease-in-out infinite;
+}
+
+.product__price_Skeleton::after {
+    animation: skeleton 1.75s ease-in-out infinite;
+}
+
+/* Loading Animation */
+@keyframes skeleton {
+    100% {
+        transform: translateX(100%); 
+    }
+}
+
+.product__category {
+    @apply text-sm text-gray-500 max-sm:text-[0.7rem]
+}
+
+.product__category_Skeleton {
+    @apply w-1/2 h-4 bg-gray-200 rounded-md mb-2
+}
+
+.product__price {
+    @apply font-semibold max-sm:text-sm
+}
+
+.product__price_Skeleton {
+    @apply w-1/5 h-4 bg-gray-200 rounded-md
+}
