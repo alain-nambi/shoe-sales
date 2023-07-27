@@ -39,6 +39,11 @@ const Product: React.FC = () => {
     const getProducts = async () => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_FAKE_STORE_API_URL}/products`);
+            // Fake loading effect
+            // setTimeout(() => {
+            //     setProducts(response?.data);
+            //     setLoading(false)
+            // }, 120000)
             setProducts(response?.data);
             setLoading(false)
         } catch (error) {

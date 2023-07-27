@@ -44,20 +44,10 @@
 
 
 .product__imagerPlaceHolder_Skeleton::after, 
-.product__title_Skeleton::after {
-    animation: skeleton 1.25s ease-in-out infinite;
-}
-
-.product__title_Skeleton::after { 
-    animation: skeleton 1.25s ease-in-out infinite;
-}
-
+.product__title_Skeleton::after,
+.product__price_Skeleton::after,
 .product__category_Skeleton::after {
-    animation: skeleton 1.5s ease-in-out infinite;
-}
-
-.product__price_Skeleton::after {
-    animation: skeleton 1.75s ease-in-out infinite;
+    animation: skeleton 1.25s ease-in-out infinite;
 }
 
 /* Loading Animation */
