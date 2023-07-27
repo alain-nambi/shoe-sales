@@ -16,3 +16,6 @@ C:\Users\alain\OneDrive\Documents\shoe-sales-frontend>npx shadcn-ui@latest init
 
 Success! Project initialization completed.
 ```
+
+### Environment variales installation
+https://vitejs.dev/guide/env-and-mode.html
