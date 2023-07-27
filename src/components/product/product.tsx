@@ -56,21 +56,16 @@ const Product: React.FC = () => {
     //   const isDesktop = useMediaQuery({ minWidth: 992 });
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
 
+    const getProducts = async () => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_FAKE_STORE_API_URL}/products`);
+            setProducts(response?.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     useEffect(() => {
-        const getProducts = async () => {
-            try {
-                const response = await axios.get(`${import.meta.env.VITE_FAKE_STORE_API_URL}/products`);
-                
-                // Simulate bad network
-                setInterval(() => {
-                    setProducts(response?.data);
-                }, 5000)
-
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
         getProducts();
     }, []);
 
