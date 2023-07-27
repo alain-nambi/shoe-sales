@@ -2,9 +2,9 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import styles from "./product.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useMediaQuery } from "react-responsive";
+import SkeletonProductItem from "./skeleton-product-item";
 
-interface Product {
+interface ProductProps {
     id: number;
     title: string;
     price: number;
@@ -12,24 +12,7 @@ interface Product {
     category: string;
 }
 
-const SkeletonProductItem: React.FC<{ count: number }> = ({ count }) => {
-    const skeletons = Array.from({ length: count }, (_, index) => (
-        <div className={styles.product__content} key={index}>
-            <div className={styles.product__imagerPlaceHolder_Skeleton}></div>
-            <div className={styles.skeleton__container}>
-                <div className="mb-3">
-                    <p className={styles.product__title_Skeleton}></p>
-                    <p className={styles.product__category_Skeleton}></p>
-                </div>
-                <div className={styles.product__price_Skeleton}></div>
-            </div>
-        </div>
-    ));
-
-    return <>{skeletons}</>;
-};
-
-const ProductItem: React.FC<{ product: Product }> = ({ product }) => (
+const ProductItem: React.FC<{ product: ProductProps }> = ({ product }) => (
     <div className={styles.product__content} key={product.id}>
         <div className={styles.product__imagerPlaceHolder}>
             <LazyLoadImage
@@ -50,18 +33,17 @@ const ProductItem: React.FC<{ product: Product }> = ({ product }) => (
 );
 
 const Product: React.FC = () => {
-    const [products, setProducts] = useState<Product[]>([]);
-
-    const isMobile = useMediaQuery({ maxWidth: 767 });
-    //   const isDesktop = useMediaQuery({ minWidth: 992 });
-    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+    const [products, setProducts] = useState<ProductProps[]>([]);
+    const [loading, setLoading] = useState(true);
 
     const getProducts = async () => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_FAKE_STORE_API_URL}/products`);
             setProducts(response?.data);
+            setLoading(false)
         } catch (error) {
             console.log(error);
+            setLoading(false)
         }
     };
 
@@ -70,25 +52,20 @@ const Product: React.FC = () => {
     }, []);
 
     return (
-        <section className={styles.product__container}>
-            {products.length > 0 ? (
-                <>
-                    {products.map((product) => (
-                        <ProductItem product={product} key={product.id} />
-                    ))}
-                </>
+        <>
+            {loading ? (
+                <SkeletonProductItem />
+            ) : products.length > 0 ? 
+            (
+                    <section className={styles.product__container}>
+                        {products.map((product) => (
+                            <ProductItem product={product} key={product.id} />
+                        ))}
+                    </section>
             ) : (
-                <>
-                    {isMobile ? (
-                        <SkeletonProductItem count={4} />
-                    ) : isTablet ? (
-                        <SkeletonProductItem count={6} />
-                    ) : (
-                        <SkeletonProductItem count={8} />
-                    )}
-                </>
+                <p>Aucun produit n'a été trouvé</p>
             )}
-        </section>
+        </>
     );
 };
 
