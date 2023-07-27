@@ -7,7 +7,7 @@ const SkeletonProductItem: React.FC = () => {
     //   const isDesktop = useMediaQuery({ minWidth: 992 });
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
 
-    const count:number = isMobile ? 2 : isTablet ? 4 : 8;
+    const count:number = isMobile ? 4 : isTablet ? 6 : 8;
 
     const skeletons = Array.from({ length: count }, (_, index) => (
         <div className={styles.product__content} key={index}>
