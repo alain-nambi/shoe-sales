@@ -8,7 +8,7 @@
 }
 
 .banner__title {
-    @apply font-bold max-sm:text-base lg:text-3xl md:text-2xl
+    @apply font-bold max-sm:text-base lg:text-3xl md:text-2xl text-center
 }
 
 .banner__subtitle {
