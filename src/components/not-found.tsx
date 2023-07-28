@@ -13,7 +13,7 @@ const NotFound: React.FC = () => {
                     
                 </div>
                 <Link to="/home" className="ml-2">
-                    <Button className="bg-orange-500 hover:bg-orange-400">
+                    <Button className="bg-rose-500 hover:bg-rose-400">
                         Revenir à l'accueil
                     </Button>
                 </Link>

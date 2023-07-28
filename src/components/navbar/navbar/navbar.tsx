@@ -70,7 +70,7 @@ const NavBar: React.FC = () => {
               <NavItem
                 key={item.href}
                 href={item.href}
-                classname={"hover:text-orange-500"}
+                classname={"hover:text-rose-500"}
               >
                 {item.label}
               </NavItem>

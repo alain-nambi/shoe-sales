@@ -9,7 +9,7 @@
 }
 
 .navbar__logo {
-  @apply text-base text-orange-500 font-black
+  @apply text-base text-rose-500 font-black
 }
 /* ------ End of navigations ------ */
 
@@ -34,7 +34,7 @@
 
 /* ------ Mobile Menu ------ */
 .menuMobile__container {
-  @apply fixed z-10 bottom-0 right-0 left-0 px-5 py-4 bg-orange-500 rounded-2xl mx-2 my-2;
+  @apply fixed z-10 bottom-0 right-0 left-0 px-5 py-4 bg-rose-500 rounded-2xl mx-2 my-2;
 }
 
 .menuMobile__content {
@@ -46,6 +46,6 @@
 }
 
 .menuMobile__list:hover {
-  @apply bg-white text-orange-500;
+  @apply bg-white text-rose-500;
 }
 /* ------ End Mobile Menu ------ */
