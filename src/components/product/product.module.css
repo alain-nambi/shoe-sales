@@ -19,7 +19,7 @@
 }
 
 .product__title {
-    @apply font-semibold text-base max-sm:text-sm
+    @apply font-semibold text-base max-sm:text-sm h-12 overflow-hidden max-sm:h-6
 }
 
 .product__title_Skeleton {
@@ -66,9 +66,13 @@
 }
 
 .product__price {
-    @apply font-semibold max-sm:text-sm
+    @apply font-semibold max-sm:text-sm self-end
 }
 
 .product__price_Skeleton {
-    @apply w-1/5 h-4 bg-gray-200 rounded-md
+    @apply w-1/5 h-4 bg-gray-200 rounded-md self-end
+}
+
+.skeleton__container {
+    @apply flex flex-col justify-between
 }

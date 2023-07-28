@@ -22,12 +22,14 @@ const ProductItem: React.FC<{ product: ProductProps }> = ({ product }) => (
                 alt={product.title}
             />
         </div>
-        <div>
+        <div className="h-30 flex flex-col justify-between">
             <div className="mb-3">
-                <p className={styles.product__title}>{product.title}</p>
+                <p className={styles.product__title} title={product.title}>{product.title}</p>
                 <p className={styles.product__category}>{product.category}</p>
             </div>
-            <span className={styles.product__price}>{product.price}</span>
+            <div className="self-end">
+                <span className={styles.product__price}>${product.price}</span>
+            </div>
         </div>
     </div>
 );
@@ -60,16 +62,16 @@ const Product: React.FC = () => {
         <>
             {loading ? (
                 <SkeletonProductItem />
-            ) : products.length > 0 ? 
-            (
+            ) : products.length > 0 ?
+                (
                     <section className={styles.product__container}>
                         {products.map((product) => (
                             <ProductItem product={product} key={product.id} />
                         ))}
                     </section>
-            ) : (
-                <p>Aucun produit n'a été trouvé</p>
-            )}
+                ) : (
+                    <p>Aucun produit n'a été trouvé</p>
+                )}
         </>
     );
 };
