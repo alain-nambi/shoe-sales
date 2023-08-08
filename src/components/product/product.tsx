@@ -4,6 +4,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import SkeletonProductItem from "./skeleton-product-item";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, Autoplay } from 'swiper/modules';
+
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { useMediaQuery } from "react-responsive";
+
 interface ProductProps {
     id: number;
     title: string;
@@ -35,6 +49,10 @@ const ProductItem: React.FC<{ product: ProductProps }> = ({ product }) => (
 );
 
 const Product: React.FC = () => {
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const isDesktop = useMediaQuery({ minWidth: 992 });
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+
     const [products, setProducts] = useState<ProductProps[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -64,10 +82,23 @@ const Product: React.FC = () => {
                 <SkeletonProductItem />
             ) : products.length > 0 ?
                 (
-                    <section className={styles.product__container}>
-                        {products.map((product) => (
-                            <ProductItem product={product} key={product.id} />
-                        ))}
+                    <section className="mt-4">
+                        <Swiper
+                            modules={[Navigation, Pagination, Scrollbar, Autoplay]}
+                            spaceBetween={10}
+                            slidesPerView={isMobile ? 1 : isTablet ? 3 : 4}
+                            navigation={isDesktop}
+                            pagination={{ clickable: true }}
+                            scrollbar={{ draggable: true }}
+                            autoplay={{delay: 3000, disableOnInteraction:false}}
+                            className="flex justify-center items-center flex-1"
+                        >
+                            {products.map((product) => (
+                                <SwiperSlide key={product.id} className="mb-10">
+                                    <ProductItem product={product} key={product.id} />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </section>
                 ) : (
                     <p>Aucun produit n'a été trouvé</p>

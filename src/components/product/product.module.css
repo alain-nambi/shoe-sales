@@ -1,9 +1,25 @@
 .product__container {
-    @apply mt-4 grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-4
+    @apply 
+    mt-4 
+    grid 
+    grid-cols-1 
+    lg:grid-cols-4 
+    md:grid-cols-3 
+    gap-4
+    max-sm:place-items-center
 }
 
 .product__content {
-    @apply bg-white cursor-pointer rounded-xl border p-3 space-y-4 relative
+    @apply 
+    bg-white 
+    cursor-pointer 
+    rounded-xl 
+    border 
+    p-3 
+    space-y-4 
+    relative
+    max-sm:w-3/4
+    max-sm:mb-4
 }
 
 .product__imagerPlaceHolder, .product__imagerPlaceHolder_Skeleton {
@@ -11,7 +27,18 @@
 }
 
 .product__image {
-    @apply absolute w-full h-full left-0 top-0 right-0 bottom-0 object-cover aspect-square rounded-md duration-150
+    @apply 
+    absolute 
+    w-full 
+    h-full 
+    left-0 
+    top-0 
+    right-0 
+    bottom-0 
+    object-cover 
+    aspect-square 
+    rounded-md 
+    duration-150
 }
 
 .product__content:hover .product__image {
