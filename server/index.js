@@ -25,13 +25,12 @@ app.use(bodyParser.json());
 // The `urlencoded({extended: false})` option tells body-parser to parse URL-encoded data, but only the standard format.
 app.use(bodyParser.urlencoded({extended: false}));
 
+// Defines a users route 
+// that will match any HTTP request to the `/api/v1/*` endpoint.
+app.use("/api/v1", require("./routes/userRoute"))
 
 // Defines the port number.
 const PORT = process.env.PORT || 4005;
-
-// Defines a route that will match any HTTP request to the `/` endpoint.
-app.use("/api/v1", require("./routes/userRoute"))
-
 // Start the server.
 app.listen(PORT)
 
