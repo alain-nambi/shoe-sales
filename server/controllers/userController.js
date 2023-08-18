@@ -1,7 +1,7 @@
 const userModel = require("../models/userModel")
 
 // Get all users 
-const getAllusers = (_req, res, _next) => {
+const getAllUsers = (_req, res, _next) => {
     try {   
         userModel
             .findAll()
@@ -41,6 +41,6 @@ const getUser = (req, res, _next) => {
 }
 
 module.exports = {
-    getAllusers,
+    getAllUsers,
     getUser,
 }
