@@ -1,7 +1,7 @@
-# shoe-sales
-An ecommerce app created with React, TailwindCSS, ShadCN UI and Vite
+
 
 <div align="center">
+  <h4> An ecommerce app created with React, TailwindCSS, ShadCN UI and Vite </h4>
   <div>
     <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
     <img src="https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white" />
