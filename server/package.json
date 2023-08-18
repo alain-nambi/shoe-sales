@@ -14,7 +14,10 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "cd ../client && npm run dev",
+    "server": "nodemon index.js",
+    "migrate:up": "npx sequelize-cli db:migrate",
+    "migrate:down": "npw sequelize-cli db:migrate:undo"
   },
   "author": "Alain Nambii",
   "license": "ISC"
