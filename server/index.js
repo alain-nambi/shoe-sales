@@ -30,13 +30,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 const PORT = process.env.PORT || 4005;
 
 // Defines a route that will match any HTTP request to the `/` endpoint.
-app.route("/")
-  .get((req, res) => {
-    // Send a response.
-    res.json({
-        name: 'Hello'
-    });
-});
+app.use("/api/v1", require("./routes/userRoute"))
 
 // Start the server.
 app.listen(PORT)
