@@ -1,4 +1,5 @@
 const userModel = require("../models/userModel")
+const bcrypt = require("bcrypt")
 
 // Get all users 
 const getAllUsers = async (_req, res, _next) => {
@@ -46,26 +47,25 @@ const getUser = async (req, res, _next) => {
 // Create user
 const createUser = async (req, res, _next) => {
   try {
-    const { firstName, lastName, email } = req.body;
-    await userModel
-      .create({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-      })
-      .then((result) => {
-        res
-          .status(201)
-          .json({
-            message: `User ${firstName} ${lastName} has been created`,
-            user: result,
-          });
-      })
-  } catch (error) {
-    res
-      .status(401)
-      .json({ message: error.message })
+    const { firstName, lastName, email, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10)
+
+    const result = await userModel.create({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: hashedPassword,
+    })
     
+    res.status(201).json({
+      message: `User ${firstName} ${lastName} has been created`,
+      user: result,
+    })
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    })
+
     console.log(`Error on creating user : ${error}`);
   }
 }; 
