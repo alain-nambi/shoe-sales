@@ -111,9 +111,50 @@ const deleteUser = async (req, res, _next) => {
   }
 }
 
+// Update user
+const updateUser = async (req, res, _next) => {
+  const { userId } = req.params
+  const { updatedEmail, updatedFirstName, updatedLastName } = req.body
+
+  try {
+    await userModel
+      .findByPk(userId)
+      .then((user) => {
+        if (user) {
+          user.email = updatedEmail
+          user.firstName = updatedFirstName
+          user.lastName = updatedLastName
+          
+          user.save()
+
+          res
+            .status(201)
+            .json({
+              user: user,
+              message: `User has been updated`
+            })
+        } else {
+          res
+            .status(404)
+            .json({
+              message: `User not found`
+            })
+        }
+      })
+  } catch (error) {
+    res
+      .status(401)
+      .json({
+        message: "User can't be updated"
+      })
+    console.log(`Error on updating user ${error}`);
+  }
+}
+
 module.exports = {
     getAllUsers,
     getUser,
     createUser,
     deleteUser,
+    updateUser,
 }
