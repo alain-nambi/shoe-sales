@@ -185,10 +185,48 @@ const updateUser = async (req, res, _next) => {
   }
 }
 
+const loginUser = async (req, res, _next) => {
+  try {
+    const { email, password } = req.body
+    if (!email || !password) {
+      throw new Error("All fields must be filled")
+    }
+
+    await UserModel
+      .findOne({
+        where: { email: email }
+      })
+      .then(async (user) => {
+        if (!user) {
+          return res.status(401).json({
+            message: "Email or password is invalid"
+          })
+        }
+
+        const isPasswordMatched = await bcrypt.compare(password, user.password)
+        if (!isPasswordMatched) {
+          return res.status(401).json({
+            message: "Email or password is invalid"
+          })
+        } else {
+          return res.status(200).json({
+            message: "User has been authentificate successfully",
+            user: user
+          })
+        }
+      })
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message
+    })
+  }
+}
+
 module.exports = {
     getAllUsers,
     getUser,
     createUser,
     deleteUser,
     updateUser,
+    loginUser
 }
