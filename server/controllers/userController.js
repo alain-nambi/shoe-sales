@@ -1,10 +1,10 @@
-const userModel = require("../models/userModel")
+const UserModel = require("../models/UserModel")
 const bcrypt = require("bcrypt")
 
 // Get all users 
 const getAllUsers = async (_req, res, _next) => {
   try {
-    await userModel
+    await UserModel
       .findAll()
       .then((users) => {
         res
@@ -21,7 +21,7 @@ const getUser = async (req, res, _next) => {
   try {
     const userId = req.params.userId;
     if (userId) {
-      await userModel
+      await UserModel
         .findByPk(userId)
         .then((user) => {
           if (user) {
@@ -50,7 +50,7 @@ const createUser = async (req, res, _next) => {
     const { firstName, lastName, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    const result = await userModel.create({
+    const result = await UserModel.create({
       firstName: firstName,
       lastName: lastName,
       email: email,
@@ -75,13 +75,13 @@ const deleteUser = async (req, res, _next) => {
   try {
     const userId = req.params.userId
     if (userId) {
-      await userModel
+      await UserModel
         .findByPk(userId)
         .then((user) => {
           if (user) {
             const { firstName, lastName } = user.dataValues;
 
-            userModel
+            UserModel
               .destroy({
                 where: {id: userId}
               })
@@ -117,7 +117,7 @@ const updateUser = async (req, res, _next) => {
   const { updatedEmail, updatedFirstName, updatedLastName } = req.body
 
   try {
-    await userModel
+    await UserModel
       .findByPk(userId)
       .then((user) => {
         if (user) {
