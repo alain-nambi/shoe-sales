@@ -48,6 +48,32 @@ const getUser = async (req, res, _next) => {
 const createUser = async (req, res, _next) => {
   try {
     const { firstName, lastName, email, password } = req.body;
+
+    // Check if the firstName field is empty
+    if (!firstName) {
+      // Throw an error with the message "First name is required"
+      throw new Error('First name is required');
+    }
+
+    // The throw statement is used to terminate the execution of the current function and propagate the error to the caller.
+    // Check if the lastName field is empty
+    if (!lastName) {
+      // Throw an error with the message "Last name is required"
+      throw new Error('Last name is required');
+    }
+
+    // Check if the email field is empty
+    if (!email) {
+      // Throw an error with the message "Email is required"
+      throw new Error('Email is required');
+    }
+
+    // Check if the password field is empty
+    if (!password) {
+      // Throw an error with the message "Password is required"
+      throw new Error('Password is required');
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10)
 
     const result = await UserModel.create({
