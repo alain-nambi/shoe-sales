@@ -13,4 +13,7 @@ router.post("/users/create", userController.createUser)
 // Delete user endpoint
 router.delete("/users/delete/:userId", userController.deleteUser)
 
+// Update user endpoint
+router.put("/users/update/:userId", userController.updateUser)
+
 module.exports = router
