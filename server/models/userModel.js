@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const db = require("../util/database");
 
 // Define the User model using Sequelize
-const Users = db.define("t_users", {
+const Users = db.define("Users", {
   id: {
     type: Sequelize.INTEGER,
     allowNull: false,
