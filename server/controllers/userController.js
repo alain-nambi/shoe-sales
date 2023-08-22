@@ -7,40 +7,53 @@ const getAllUsers = async (_req, res, _next) => {
     await UserModel
       .findAll()
       .then((users) => {
-        res
-          .status(200)
-          .json({ users: users });
+        if (!users) {
+          return res.status(404).json({
+            message: "User can't be fetched"
+          })
+        }
+
+        return res.status(200).json({
+          users: users
+        })
       })
   } catch (error) {
     console.log(`Error on getting all users : ${error}`);
+
+    return res.status(500).json({
+      message: error.message
+    })
   }
 };
 
 // Get one user
 const getUser = async (req, res, _next) => {
   try {
-    const userId = req.params.userId;
-    if (userId) {
-      await UserModel
-        .findByPk(userId)
-        .then((user) => {
-          if (user) {
-            res
-              .status(200)
-              .json({ user: user });
-          } else {
-            res
-              .status(404)
-              .json({ message: `User not found` });
-          }
-        })
-    }
-  } catch (error) {
-    res
-      .status(400)
-      .json({ message: error.message })
+    const { userId } = req.params
 
+    if (!userId) {
+      throw new Error("User ID is required")
+    }
+
+    await UserModel
+      .findByPk(userId)
+      .then((user) => {
+        if (!user) {
+          return res.status(404).json({
+            message: "User not found"
+          })
+        }
+
+        return res.status(200).json({
+          user: user
+        })
+      })
+  } catch (error) {
     console.log(`Error on get user by userId : ${error}`);
+
+    return res.status(500).json({ 
+      message: error.message
+    })
   }
 };
 
@@ -76,104 +89,99 @@ const createUser = async (req, res, _next) => {
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    const result = await UserModel.create({
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: hashedPassword,
-    })
-    
-    res.status(201).json({
-      message: `User ${firstName} ${lastName} has been created`,
-      user: result,
-    })
+    await UserModel
+      .create({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: hashedPassword,
+      })
+      .then((result) => {
+        return res.status(201).json({
+          message: "User has been created",
+          user: result
+        })
+      })
   } catch (error) {
-    res.status(500).json({
+    console.log(`Error on creating user : ${error}`);
+
+    return res.status(500).json({
       message: error.message
     })
-
-    console.log(`Error on creating user : ${error}`);
   }
 }; 
 
 // Delete user
 const deleteUser = async (req, res, _next) => {
   try {
-    const userId = req.params.userId
-    if (userId) {
-      await UserModel
-        .findByPk(userId)
-        .then((user) => {
-          if (user) {
-            const { firstName, lastName } = user.dataValues;
+    const { userId } = req.params
 
-            UserModel
-              .destroy({
-                where: {id: userId}
-              })
-
-            res
-              .status(200)
-              .json({
-                message: `User ${firstName} ${lastName} has been deleted`
-              })
-          } else {
-            res
-              .status(404)
-              .json({
-                message: `User not found`
-              })
-          }
-        })
+    if (!userId) {
+      throw new Error("User ID is required")
     }
-  } catch (error) {
-    res
-      .status(404)
-      .json({
-        message: `User not found`
-      })
 
+    const user = await UserModel.findByPk(userId)
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found"
+      })
+    }
+
+    UserModel
+      .destroy({
+        where: {id: userId}
+      })
+      .then(() => {
+        return res.status(200).json({
+          message: "User has been deleted"
+        })
+      })
+  } catch (error) {
     console.log(`Error on deleting user : ${error}`);
+
+    return res.status(500).json({
+      message: error.message
+    })
   }
 }
 
 // Update user
 const updateUser = async (req, res, _next) => {
-  const { userId } = req.params
-  const { updatedEmail, updatedFirstName, updatedLastName } = req.body
-
   try {
-    await UserModel
-      .findByPk(userId)
-      .then((user) => {
-        if (user) {
-          user.email = updatedEmail
-          user.firstName = updatedFirstName
-          user.lastName = updatedLastName
-          
-          user.save()
+    const { userId } = req.params
+    const { updatedEmail, updatedFirstName, updatedLastName } = req.body
+    
+    if (!userId) {
+      throw new Error("User ID is required")
+    }
 
-          res
-            .status(201)
-            .json({
-              user: user,
-              message: `User has been updated`
-            })
-        } else {
-          res
-            .status(404)
-            .json({
-              message: `User not found`
-            })
-        }
+    if (!updatedEmail || !updatedFirstName || !updatedLastName) {
+      throw new Error("All fields must be filled")
+    }
+
+    const user = await UserModel.findByPk(userId)
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found"
       })
+    }
+
+    user.email = updatedEmail
+    user.firstName = updatedFirstName
+    user.lastName = updatedLastName
+
+    user.save()
+
+    return res.status(201).json({
+      user: user,
+      message: "User has been updated"
+    })
   } catch (error) {
-    res
-      .status(401)
-      .json({
-        message: "User can't be updated"
-      })
-    console.log(`Error on updating user ${error}`);
+    return res.status(500).json({
+      message: error.message
+    })
   }
 }
 
