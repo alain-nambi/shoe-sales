@@ -16,4 +16,7 @@ router.delete("/users/delete/:userId", UserController.deleteUser)
 // Update user endpoint
 router.put("/users/update/:userId", UserController.updateUser)
 
+// Login user endpoint 
+router.post("/users/login", UserController.loginUser)
+
 module.exports = router
