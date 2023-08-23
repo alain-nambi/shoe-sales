@@ -15,7 +15,12 @@ import {
 
 import styles from "./navbar.module.css"
 
-const NavBar: React.FC = () => {
+interface NavBarProps {
+  handleOpenLoginForm: () => void,
+  handleOpenSignUpForm: () => void
+}
+
+const NavBar: React.FC<NavBarProps> = ({ handleOpenSignUpForm, handleOpenLoginForm}) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   //   const isDesktop = useMediaQuery({ minWidth: 992 });
   //   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
@@ -110,8 +115,8 @@ const NavBar: React.FC = () => {
           {/* Ne pas afficher les boutons de navigations en version mobile */}
           {!isMobile && (
             <>
-              <Button className="button__primary">Login</Button>
-              <Button className="button__secondary">Signup</Button>
+              <Button className="button__primary" onClick={handleOpenLoginForm}>Login</Button>
+              <Button className="button__secondary" onClick={handleOpenSignUpForm}>Signup</Button>
             </>
           )}
         </div>

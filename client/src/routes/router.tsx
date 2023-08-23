@@ -1,12 +1,12 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
-import Home from "../components/home/home";
+import HomeComponent from "../components/home/home";
 import NotFound from "../components/not-found"
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home />,
+        element: <HomeComponent />,
     },
     {
         path: "/home",
