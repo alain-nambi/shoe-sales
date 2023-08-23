@@ -1,0 +1,14 @@
+{
+  "name": "shoe-sales",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">\r   <h4> An ecommerce app created with React, TailwindCSS, ShadCN UI and Vite </h4>\r   <div>\r     <img src=\"https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB\" />\r     <img src=\"https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white\" />\r     <img src=\"https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black\" />\r     <img src=\"https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white\" />\r     <img src=\"https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white\" />\r     <img src=\"https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white\" />\r     <img src=\"https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black\" />\r     <img src=\"https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white\" />\r   </div>\r </div>",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd ./client && npm run dev",
+    "server": "cd ./server && nodemon index.js",
+    "migrate:up": "cd ./server && npx sequelize-cli db:migrate",
+    "migrate:down": "cd ./server && npx sequelize-cli db:migrate:undo"
+  },
+  "author": "Alain Nambii",
+  "license": "ISC"
+}
