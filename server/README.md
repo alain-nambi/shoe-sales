@@ -95,3 +95,9 @@ app.use(cors());
 app.use(mongoose.connect("mongodb://localhost:27017/mydb"));
 app.use(sequelize.initialize());
 ```
+
+```env
+VITE_PEXELS_API=dLyn9KdlD4KY7OswpmChaG5isk8kUW5VE3G55WLZaFiIVekTYwjiZvOQ
+VITE_FAKE_STORE_API_URL=https://fakestoreapi.com
+VITE_SHOE_SALES_API=http://localhost:5000
+```
