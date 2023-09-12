@@ -19,8 +19,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
-import LoginError from "./login-error";
-import LoginSuccess from "./login-success";
+import SuccessAlert from "../success-alert";
+import ErrorAlert from "../error-alert";
  
 interface LoginProps {
     isOpenLogin: boolean
@@ -95,7 +95,6 @@ const Login: React.FC<LoginProps> = ({ handleOpenLoginForm, isOpenLogin }) => {
                 actions.setSubmitting(false);
                 // Reset the form.
                 actions.resetForm();
-
                 // Set the `errors` state with the error message from the API response.
                 actions.setErrors({
                     error: {
@@ -162,11 +161,11 @@ const Login: React.FC<LoginProps> = ({ handleOpenLoginForm, isOpenLogin }) => {
                 </DialogHeader>
 
                 {!isSubmitting && errors.error && !isLogged && (
-                    <LoginError errors={errors} />
+                    <ErrorAlert errors={errors} />
                 )}
 
                 {!isSubmitting && isLogged && (
-                    <LoginSuccess valid={values.valid} />
+                    <SuccessAlert valid={values.valid} />
                 )}
             
                 <form onSubmit={handleSubmit} autoComplete="off">
@@ -180,7 +179,7 @@ const Login: React.FC<LoginProps> = ({ handleOpenLoginForm, isOpenLogin }) => {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 placeholder="eg: alice@wonderland.com"
-                                className={errors.email && touched.email ? styles.emailError : ""}
+                                className={errors.email && touched.email ? styles.errorRing : ""}
                             />
                             {errors.email && touched.email && <p className="text-rose-600 text-sm">{errors.email}</p>}
                         </div>
@@ -194,7 +193,7 @@ const Login: React.FC<LoginProps> = ({ handleOpenLoginForm, isOpenLogin }) => {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 placeholder="eg: alice123"
-                                className={errors.password && touched.password ? styles.emailError : ""}
+                                className={errors.password && touched.password ? styles.errorRing : ""}
                             />
                             {errors.password && touched.password && <p className="text-rose-600 text-sm">{errors.password}</p>}
                         </div>

@@ -1,12 +1,12 @@
-import { Alert, AlertDescription, AlertTitle } from "../../ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "../../components/ui/alert";
 import { CheckCircle } from "lucide-react" 
 
 
-interface LoginSuccessProps {
+interface SuccessAlertProps {
     valid: any
 }
 
-const LoginSuccess: React.FC<LoginSuccessProps> = ({ valid }) => {
+const SuccessAlert: React.FC<SuccessAlertProps> = ({ valid }) => {
     return (
         <Alert className="border-none bg-emerald-500 text-white flex justify-between items-center">
             <div>
@@ -29,4 +29,4 @@ const LoginSuccess: React.FC<LoginSuccessProps> = ({ valid }) => {
     )
 }
 
-export default LoginSuccess;
+export default SuccessAlert;

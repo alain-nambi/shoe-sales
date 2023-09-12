@@ -24,4 +24,7 @@ dist-ssr
 *.sw?
 yarn.lock
 
-server
+.env
+*.drawio*
+
+server-test

@@ -1,11 +1,11 @@
-import { Alert, AlertDescription, AlertTitle } from "../../ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "../../components/ui/alert";
 import { Terminal } from "lucide-react" 
 
-interface LoginErrorProps {
+interface ErrorAlertProps {
     errors: any
 }
 
-const LoginError: React.FC<LoginErrorProps> = ({ errors }) => {
+const ErrorAlert: React.FC<ErrorAlertProps> = ({ errors }) => {
     return (
         <Alert className="border-none bg-rose-500 text-white flex justify-between items-center">
             <div>
@@ -28,4 +28,4 @@ const LoginError: React.FC<LoginErrorProps> = ({ errors }) => {
     )
 } 
 
-export default LoginError
+export default ErrorAlert
