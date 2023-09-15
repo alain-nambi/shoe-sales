@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // Defines a users route 
 // that will match any HTTP request to the `/api/v1/*` endpoint.
-app.use("/api/v1", userRoute)
+app.use("/api/users", userRoute)
 
 // Defines the port number.
 const PORT = process.env.PORT || 4005;

@@ -12,21 +12,21 @@ import express from "express";
 const router = express.Router();
 
 // Get all users endpoint
-router.get("/users", getAllUsers);
+router.get("/", getAllUsers);
 
 // Get one user endpoint
-router.get("/users/:userId", getUser);
+router.get("/:userId", getUser);
 
 // Create user endpoint
-router.post("/users/create", createUser);
+router.post("/create", createUser);
 
 // Delete user endpoint
-router.delete("/users/delete/:userId", deleteUser);
+router.delete("/delete/:userId", deleteUser);
 
 // Update user endpoint
-router.put("/users/update/:userId", updateUser);
+router.put("/update/:userId", updateUser);
 
 // Login user endpoint
-router.post("/users/login", loginUser);
+router.post("/login", loginUser);
 
 export default router;
