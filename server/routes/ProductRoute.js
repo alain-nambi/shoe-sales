@@ -1,12 +1,15 @@
 import express from "express";
-import { getAllProducts } from "../controllers/ProductController.js";
+import {
+  getAllProducts,
+  getProduct,
+} from "../controllers/ProductController.js";
 const router = express.Router();
 
 // Get all products : GET /api/v1/products
 router.get("/", getAllProducts);
 
-// // Get one product : GET /api/v1/products/:productId
-// router.get("/products/:productId", ProductController.getProduct)
+// Get one product : GET /api/v1/products/:productId
+router.get("/:productId", getProduct);
 
 // // Create a product : POST /api/v1/products/create
 // router.post("/products/create", ProductController.createProduct)
