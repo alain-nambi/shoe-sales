@@ -28,10 +28,12 @@ const SignUp: React.FC<SignUpProps> = ({ handleOpenSignUpForm, isOpenSignUp }) =
     const [isLoading, setIsLoading] = useState(false)
     const [isUserCreated, setIsUserCreated] = useState(false) 
 
+    const emailRules = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;;
+
     const validationSchema = yup.object().shape({
         email: yup
             .string()
-            .email("Enter a valid email")
+            .matches(emailRules, { message: "Please enter a valid email" })
             .required("Email Required"),
         password: yup
             .string()
