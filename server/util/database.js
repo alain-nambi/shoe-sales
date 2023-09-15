@@ -1,10 +1,9 @@
-const Sequelize = require("sequelize")
-require("dotenv").config()
+import Sequelize from "sequelize";
+import dotenv from "dotenv";
+dotenv.config();
 
-const config = require("../config/config")
+import { development, production, test } from "../config/config.js";
 
-const sequelize = new Sequelize(
-    config.development
-)
+const sequelize = new Sequelize(development);
 
-module.exports = sequelize;
+export default sequelize;

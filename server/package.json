@@ -11,6 +11,7 @@
   "description": "To install the required dependencies, you can use the following command:",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "doc": "docs"
   },

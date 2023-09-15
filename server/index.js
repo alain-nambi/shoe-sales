@@ -1,13 +1,17 @@
 // This code will start a simple Node.js server that listens on specified port.
 
 // Import env variales from .env file
-require("dotenv").config()
+import dotenv from "dotenv"
+dotenv.config()
+
 
 // Requires the Express module.
-const express = require("express");
+import express from "express"
+import bodyParser from "body-parser"
+import cors from "cors"
 
-const bodyParser = require("body-parser");
-const cors = require("cors");
+// Import all availables routes
+import userRoute from "./routes/UserRoute.js";
 
 // Creates an Express application.
 // This is the main entry point for your application.
@@ -27,7 +31,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // Defines a users route 
 // that will match any HTTP request to the `/api/v1/*` endpoint.
-app.use("/api/v1", require("./routes/userRoute"))
+app.use("/api/v1", userRoute)
 
 // Defines the port number.
 const PORT = process.env.PORT || 4005;

@@ -1,31 +1,28 @@
-require('dotenv').config()
+import dotenv from "dotenv";
+dotenv.config();
 
 const development = {
-    database: process.env.PG_DATABASE,
-    username: process.env.PG_USER,
-    password: process.env.PG_PASSWORD,
-    host: process.env.PG_HOST,
-    dialect: process.env.DIALECT
-}
+  database: process.env.PG_DATABASE,
+  username: process.env.PG_USER,
+  password: process.env.PG_PASSWORD,
+  host: process.env.PG_HOST,
+  dialect: process.env.DIALECT,
+};
 
 const test = {
-    database: process.env.PG_DATABASE,
-    username: process.env.PG_USER,
-    password: process.env.PG_PASSWORD,
-    host: process.env.PG_HOST,
-    dialect: process.env.DIALECT
-}
+  database: process.env.PG_DATABASE,
+  username: process.env.PG_USER,
+  password: process.env.PG_PASSWORD,
+  host: process.env.PG_HOST,
+  dialect: process.env.DIALECT,
+};
 
 const production = {
-    database: process.env.PG_DATABASE,
-    username: process.env.PG_USER,
-    password: process.env.PG_PASSWORD,
-    host: process.env.PG_HOST,
-    dialect: process.env.DIALECT
-}
+  database: process.env.PG_DATABASE,
+  username: process.env.PG_USER,
+  password: process.env.PG_PASSWORD,
+  host: process.env.PG_HOST,
+  dialect: process.env.DIALECT,
+};
 
-module.exports = {
-    development,
-    test,
-    production
-}
+export { development, test, production };

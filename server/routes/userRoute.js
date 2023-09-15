@@ -1,22 +1,32 @@
-const UserController = require("../controllers/UserController")
-const router = require("express").Router()
+import {
+  createUser,
+  deleteUser,
+  getUser,
+  loginUser,
+  getAllUsers,
+  updateUser,
+} from "../controllers/UserController.js"
 
-// Get all users endpoint 
-router.get("/users", UserController.getAllUsers)
+import express from "express";
+
+const router = express.Router();
+
+// Get all users endpoint
+router.get("/users", getAllUsers);
 
 // Get one user endpoint
-router.get("/users/:userId", UserController.getUser)
+router.get("/users/:userId", getUser);
 
 // Create user endpoint
-router.post("/users/create", UserController.createUser)
+router.post("/users/create", createUser);
 
 // Delete user endpoint
-router.delete("/users/delete/:userId", UserController.deleteUser)
+router.delete("/users/delete/:userId", deleteUser);
 
 // Update user endpoint
-router.put("/users/update/:userId", UserController.updateUser)
+router.put("/users/update/:userId", updateUser);
 
-// Login user endpoint 
-router.post("/users/login", UserController.loginUser)
+// Login user endpoint
+router.post("/users/login", loginUser);
 
-module.exports = router
+export default router;
