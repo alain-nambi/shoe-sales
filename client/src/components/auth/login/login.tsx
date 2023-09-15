@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SuccessAlert from "../success-alert";
 import ErrorAlert from "../error-alert";
+import { Eye, EyeOff } from "lucide-react";
  
 interface LoginProps {
     isOpenLogin: boolean
@@ -32,6 +33,7 @@ const Login: React.FC<LoginProps> = ({ handleOpenLoginForm, isOpenLogin }) => {
 
     const [isLogged, setIsLogged] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [isHidePassword, setIsHidePassword] = useState(false)
 
     const validationSchema = yup.object().shape({
         email: yup
@@ -183,18 +185,31 @@ const Login: React.FC<LoginProps> = ({ handleOpenLoginForm, isOpenLogin }) => {
                             />
                             {errors.email && touched.email && <p className="text-rose-600 text-sm">{errors.email}</p>}
                         </div>
-
                         <div className="flex flex-col gap-2">
                             <Label htmlFor="password">Password</Label>
-                            <Input
-                                id="password"
-                                type="password"
-                                value={values.password}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                placeholder="eg: alice123"
-                                className={errors.password && touched.password ? styles.errorRing : ""}
-                            />
+                            <div className="relative">
+                                <Input
+                                    id="password"
+                                    type={isHidePassword ? "password" : "text"}
+                                    value={values.password}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    placeholder="eg: alice123"
+                                    className={errors.password && touched.password ? styles.errorRing : ""}
+                                />
+                                <div className="absolute right-0 top-0">
+                                    <Button 
+                                        type="button" 
+                                        className="bg-rose-400 hover:bg-rose-400 w-full" onClick={() => setIsHidePassword(!isHidePassword)}
+                                    >
+                                        {isHidePassword 
+                                            ? <Eye />
+                                            : <EyeOff />
+                                        }
+                                    </Button>
+                                </div>
+                            </div>
+                            
                             {errors.password && touched.password && <p className="text-rose-600 text-sm">{errors.password}</p>}
                         </div>
 
