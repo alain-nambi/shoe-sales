@@ -1,28 +1,27 @@
 import Sequelize from "sequelize";
-import db from "../util/database.js"
+import db from "../util/database.js";
 
 // Define the User model using Sequelize
-const Users = db.define("Users", {
+const Products = db.define("Products", {
   id: {
     type: Sequelize.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
   },
-  firstName: {
+  title: {
     type: Sequelize.STRING,
   },
-  lastName: {
+  price: {
+    type: Sequelize.FLOAT,
+  },
+  image: {
     type: Sequelize.STRING,
   },
-  email: {
-    type: Sequelize.STRING,
-    unique: true,
-  },
-  password: {
+  category: {
     type: Sequelize.STRING,
   },
 });
 
 // Export the User model
-export default Users;
+export default Products;

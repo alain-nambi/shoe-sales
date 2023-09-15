@@ -11,7 +11,8 @@ import bodyParser from "body-parser"
 import cors from "cors"
 
 // Import all availables routes
-import userRoute from "./routes/UserRoute.js";
+import UserRoute from "./routes/UserRoute.js";
+import ProductRoute from "./routes/ProductRoute.js"
 
 // Creates an Express application.
 // This is the main entry point for your application.
@@ -31,7 +32,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // Defines a users route 
 // that will match any HTTP request to the `/api/v1/*` endpoint.
-app.use("/api/users", userRoute)
+app.use("/api/users", UserRoute)
+app.use("/api/products", ProductRoute)
 
 // Defines the port number.
 const PORT = process.env.PORT || 4005;
